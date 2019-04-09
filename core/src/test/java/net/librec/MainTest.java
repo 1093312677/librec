@@ -15,9 +15,11 @@ public class MainTest {
 
     public static void main(String[] args) throws Exception {
 
+        long startTime = System.currentTimeMillis();
+
         // build data model
         Configuration conf = new Configuration();
-        conf.set("dfs.data.dir", "D:\\syt\\librec\\data");
+        conf.set("dfs.data.dir", "F:\\code\\librec\\data");
         TextDataModel dataModel = new TextDataModel(conf);
         dataModel.buildDataModel();
 
@@ -46,5 +48,7 @@ public class MainTest {
         ndcgEvaluator.setTopN(10);
         double ndcgValue = ndcgEvaluator.evaluate(evalContext);
         System.out.println("ndcg:" + ndcgValue);
+
+        System.out.println("cost time : " + (System.currentTimeMillis() - startTime) + " millis.");
     }
 }
